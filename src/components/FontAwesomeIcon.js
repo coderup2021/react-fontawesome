@@ -5,9 +5,9 @@ import log from '../logger'
 import normalizeIconArgs from '../utils/normalize-icon-args'
 import objectWithKey from '../utils/object-with-key'
 import PropTypes from 'prop-types'
-import React from 'react'
+import { h } from 'preact'
 
-const FontAwesomeIcon = React.forwardRef((props, ref) => {
+const FontAwesomeIcon = (props) => {
   const {
     icon: iconArgs,
     mask: maskArgs,
@@ -15,14 +15,14 @@ const FontAwesomeIcon = React.forwardRef((props, ref) => {
     className,
     title,
     titleId,
-    maskId
+    maskId,
   } = props
 
   const iconLookup = normalizeIconArgs(iconArgs)
 
   const classes = objectWithKey('classes', [
     ...classList(props),
-    ...className.split(' ')
+    ...className.split(' '),
   ])
   const transform = objectWithKey(
     'transform',
@@ -39,7 +39,7 @@ const FontAwesomeIcon = React.forwardRef((props, ref) => {
     symbol,
     title,
     titleId,
-    maskId
+    maskId,
   })
 
   if (!renderedIcon) {
@@ -48,9 +48,9 @@ const FontAwesomeIcon = React.forwardRef((props, ref) => {
   }
 
   const { abstract } = renderedIcon
-  const extraProps = { ref }
+  const extraProps = {}
 
-  Object.keys(props).forEach(key => {
+  Object.keys(props).forEach((key) => {
     // eslint-disable-next-line no-prototype-builtins
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
       extraProps[key] = props[key]
@@ -58,7 +58,7 @@ const FontAwesomeIcon = React.forwardRef((props, ref) => {
   })
 
   return convertCurry(abstract[0], extraProps)
-})
+}
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon'
 
@@ -80,7 +80,7 @@ FontAwesomeIcon.propTypes = {
   mask: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
-    PropTypes.string
+    PropTypes.string,
   ]),
 
   maskId: PropTypes.string,
@@ -94,7 +94,7 @@ FontAwesomeIcon.propTypes = {
   icon: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
-    PropTypes.string
+    PropTypes.string,
   ]),
 
   listItem: PropTypes.bool,
@@ -123,7 +123,7 @@ FontAwesomeIcon.propTypes = {
     '7x',
     '8x',
     '9x',
-    '10x'
+    '10x',
   ]),
 
   spin: PropTypes.bool,
@@ -140,7 +140,7 @@ FontAwesomeIcon.propTypes = {
 
   transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
-  swapOpacity: PropTypes.bool
+  swapOpacity: PropTypes.bool,
 }
 
 FontAwesomeIcon.defaultProps = {
@@ -169,9 +169,9 @@ FontAwesomeIcon.defaultProps = {
   title: '',
   titleId: null,
   transform: null,
-  swapOpacity: false
+  swapOpacity: false,
 }
 
 export default FontAwesomeIcon
 
-const convertCurry = convert.bind(null, React.createElement)
+const convertCurry = convert.bind(null, h)

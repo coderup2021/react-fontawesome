@@ -1,6 +1,5 @@
 import { parse, icon } from '@fortawesome/fontawesome-svg-core';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -329,7 +328,9 @@ function objectWithKey(key, value) {
   return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty({}, key, value) : {};
 }
 
-var FontAwesomeIcon = /*#__PURE__*/React.forwardRef(function (props, ref) {
+var n,l,u,e=[];function h(l,u,i){var t,o,r,f={};for(r in u)"key"==r?t=u[r]:"ref"==r?o=u[r]:f[r]=u[r];if(arguments.length>2&&(f.children=arguments.length>3?n.call(arguments,2):i),"function"==typeof l&&null!=l.defaultProps)for(r in l.defaultProps)void 0===f[r]&&(f[r]=l.defaultProps[r]);return v(l,f,t,o,null)}function v(n,i,t,o,r){var f={type:n,props:i,key:t,ref:o,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,constructor:void 0,__v:null==r?++u:r};return null==r&&null!=l.vnode&&l.vnode(f),f}n=e.slice,l={__e:function(n,l,u,i){for(var t,o,r;l=l.__;)if((t=l.__c)&&!t.__)try{if((o=t.constructor)&&null!=o.getDerivedStateFromError&&(t.setState(o.getDerivedStateFromError(n)),r=t.__d),null!=t.componentDidCatch&&(t.componentDidCatch(n,i||{}),r=t.__d),r)return t.__E=t}catch(l){n=l;}throw n}},u=0;
+
+var FontAwesomeIcon = function FontAwesomeIcon(props) {
   var iconArgs = props.icon,
       maskArgs = props.mask,
       symbol = props.symbol,
@@ -354,9 +355,7 @@ var FontAwesomeIcon = /*#__PURE__*/React.forwardRef(function (props, ref) {
   }
 
   var abstract = renderedIcon.abstract;
-  var extraProps = {
-    ref: ref
-  };
+  var extraProps = {};
   Object.keys(props).forEach(function (key) {
     // eslint-disable-next-line no-prototype-builtins
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
@@ -364,7 +363,8 @@ var FontAwesomeIcon = /*#__PURE__*/React.forwardRef(function (props, ref) {
     }
   });
   return convertCurry(abstract[0], extraProps);
-});
+};
+
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';
 FontAwesomeIcon.propTypes = {
   beat: PropTypes.bool,
@@ -423,6 +423,6 @@ FontAwesomeIcon.defaultProps = {
   transform: null,
   swapOpacity: false
 };
-var convertCurry = convert.bind(null, React.createElement);
+var convertCurry = convert.bind(null, h);
 
 export { FontAwesomeIcon };

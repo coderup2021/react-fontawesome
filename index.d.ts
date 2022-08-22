@@ -19,7 +19,7 @@ export type Props = FontAwesomeIconProps
 
 // This is identical to the version of Omit in Typescript 3.5. It is included for compatibility with older versions of Typescript.
 type BackwardCompatibleOmit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
-
+export type {IconProp}
 export interface FontAwesomeIconProps extends BackwardCompatibleOmit<SVGAttributes<SVGSVGElement>, 'children' | 'mask' | 'transform'>, RefAttributes<SVGSVGElement> {
   icon: IconProp
   mask?: IconProp

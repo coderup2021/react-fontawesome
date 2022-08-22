@@ -1,13 +1,12 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@fortawesome/fontawesome-svg-core'), require('prop-types'), require('react')) :
-  typeof define === 'function' && define.amd ? define(['exports', '@fortawesome/fontawesome-svg-core', 'prop-types', 'react'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["react-fontawesome"] = {}, global.FontAwesome, global.PropTypes, global.React));
-})(this, (function (exports, fontawesomeSvgCore, PropTypes, React) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@fortawesome/fontawesome-svg-core'), require('prop-types')) :
+  typeof define === 'function' && define.amd ? define(['exports', '@fortawesome/fontawesome-svg-core', 'prop-types'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["react-fontawesome"] = {}, global.FontAwesome, global.PropTypes));
+})(this, (function (exports, fontawesomeSvgCore, PropTypes) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
   var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
-  var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
@@ -336,7 +335,9 @@
     return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty({}, key, value) : {};
   }
 
-  var FontAwesomeIcon = /*#__PURE__*/React__default["default"].forwardRef(function (props, ref) {
+  var n,l,u,e=[];function h(l,u,i){var t,o,r,f={};for(r in u)"key"==r?t=u[r]:"ref"==r?o=u[r]:f[r]=u[r];if(arguments.length>2&&(f.children=arguments.length>3?n.call(arguments,2):i),"function"==typeof l&&null!=l.defaultProps)for(r in l.defaultProps)void 0===f[r]&&(f[r]=l.defaultProps[r]);return v(l,f,t,o,null)}function v(n,i,t,o,r){var f={type:n,props:i,key:t,ref:o,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,constructor:void 0,__v:null==r?++u:r};return null==r&&null!=l.vnode&&l.vnode(f),f}n=e.slice,l={__e:function(n,l,u,i){for(var t,o,r;l=l.__;)if((t=l.__c)&&!t.__)try{if((o=t.constructor)&&null!=o.getDerivedStateFromError&&(t.setState(o.getDerivedStateFromError(n)),r=t.__d),null!=t.componentDidCatch&&(t.componentDidCatch(n,i||{}),r=t.__d),r)return t.__E=t}catch(l){n=l;}throw n}},u=0;
+
+  var FontAwesomeIcon = function FontAwesomeIcon(props) {
     var iconArgs = props.icon,
         maskArgs = props.mask,
         symbol = props.symbol,
@@ -361,9 +362,7 @@
     }
 
     var abstract = renderedIcon.abstract;
-    var extraProps = {
-      ref: ref
-    };
+    var extraProps = {};
     Object.keys(props).forEach(function (key) {
       // eslint-disable-next-line no-prototype-builtins
       if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
@@ -371,7 +370,8 @@
       }
     });
     return convertCurry(abstract[0], extraProps);
-  });
+  };
+
   FontAwesomeIcon.displayName = 'FontAwesomeIcon';
   FontAwesomeIcon.propTypes = {
     beat: PropTypes__default["default"].bool,
@@ -430,7 +430,7 @@
     transform: null,
     swapOpacity: false
   };
-  var convertCurry = convert.bind(null, React__default["default"].createElement);
+  var convertCurry = convert.bind(null, h);
 
   exports.FontAwesomeIcon = FontAwesomeIcon;
 
